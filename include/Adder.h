@@ -3,25 +3,29 @@
 
 #include <bitset>
 
-typedef bool bit;
-
-/* Look ahead adder*/
+/* Carry look-ahead adder*/
 struct Adder {
-    bit carry = false;
-
-    Adder() = default;
-
-    ~Adder() = default;
-
     /*
      *  1-bit full adder, sets carry
      */
-    bit fullAdder(bit a, bit b, bit carryIn);
+    bool fullAdder(bool a, bool b, bool carryIn);
 
     /*
      *  1-bit full adder, uses and sets carry
      */
-    bit fullAdder(bit a, bit b);
+    bool fullAdder(bool a, bool b);
+
+    /*
+     * Carry look ahead adder
+     */
+    bool* add(bool a[], bool b[], int numOfBits);
+
+    /* Represents carry flag */
+    bool carry = false;
+
+    Adder() = default;
+
+    ~Adder() = default;
 };
 
 #endif //AK2_P_ADDER_H

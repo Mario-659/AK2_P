@@ -2,7 +2,9 @@ set(BINARY ${CMAKE_PROJECT_NAME})
 
 set(SOURCES
         main.cpp
-        Adder.cpp)
+        Adder.cpp
+        ../include/Utils.h
+        )
 
 add_executable(${CMAKE_PROJECT_NAME}_run ${SOURCES})
 
