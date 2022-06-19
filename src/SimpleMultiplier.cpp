@@ -1,8 +1,9 @@
-#include "../include/Multiplier.h"
+#include "../include/SimpleMultiplier.hpp"
 
 using namespace boost;
 
-dynamic_bitset<> Multiplier::multiply(dynamic_bitset<> a, dynamic_bitset<> b) {
+dynamic_bitset<>* SimpleMultiplier::multiply(dynamic_bitset<>& a, dynamic_bitset<>& b) {
+
     std::vector<dynamic_bitset<>> products;
 
     for (int i=0; i<b.size(); i++) {
@@ -14,10 +15,11 @@ dynamic_bitset<> Multiplier::multiply(dynamic_bitset<> a, dynamic_bitset<> b) {
     }
 
     Adder adder;
-    dynamic_bitset<> sum(a.size());
+    dynamic_bitset<>* sum = new dynamic_bitset<>(a.size());
 
     for (auto p : products) {
-        sum = adder.add(p, sum);
+        (*sum) = adder.add(p, *sum);
     }
+    
     return sum;
 }

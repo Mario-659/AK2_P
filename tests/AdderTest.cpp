@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
-#include "../include/Adder.h"
-#include "../include/Utils.h"
+#include "../include/Adder.hpp"
+#include "../include/Utils.hpp"
 
 TEST(AdderTest, testOneBitFullAdder){
     // truth table

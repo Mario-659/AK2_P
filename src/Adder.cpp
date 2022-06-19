@@ -1,4 +1,4 @@
-#include "../include/Adder.h"
+#include "../include/Adder.hpp"
 
 bool Adder::fullAdder(bool a, bool b, bool carryIn) {
     bool sum = carryIn ^ (a ^ b);
@@ -21,7 +21,7 @@ bool *Adder::add(bool *a, bool *b, int numOfBits) {
     return sum;
 }
 
-boost::dynamic_bitset<> Adder::add(boost::dynamic_bitset<> a, boost::dynamic_bitset<> b) {
+boost::dynamic_bitset<> Adder::add(boost::dynamic_bitset<>& a, boost::dynamic_bitset<>& b) {
     carry = false;
 
     int numOfBits = a.size();

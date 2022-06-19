@@ -1,5 +1,5 @@
-#ifndef AK2_P_ADDER_H
-#define AK2_P_ADDER_H
+#ifndef AK2_P_ADDER_HPP
+#define AK2_P_ADDER_HPP
 
 #include <boost/dynamic_bitset.hpp>
 #include <bitset>
@@ -24,7 +24,7 @@ struct Adder {
     /*
      * Carry look ahead adder
      */
-    boost::dynamic_bitset<> add(boost::dynamic_bitset<> a, boost::dynamic_bitset<> b);
+    boost::dynamic_bitset<> add(boost::dynamic_bitset<>& a, boost::dynamic_bitset<>& b);
 
     /* Represents carry flag */
     bool carry = false;

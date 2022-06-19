@@ -1,10 +1,12 @@
-#ifndef AK2_P_UTILS_H
-#define AK2_P_UTILS_H
+#ifndef AK2_P_UTILS_HPP
+#define AK2_P_UTILS_HPP
 
 #include <bitset>
 #include <string>
 
-namespace utils{
+#include <boost/dynamic_bitset.hpp>
+
+namespace utils {
 
     template <size_t bitsetSize>
     unsigned long bitArrayToULong(const bool arr[]){
@@ -29,6 +31,15 @@ namespace utils{
 
         return arr;
     }
+
+    void appendToBitset(boost::dynamic_bitset<>& x, boost::dynamic_bitset<>& y) {
+
+        for (size_t i = 0; i < y.size(); i++) {
+            x.push_back(y[i]);
+        }
+        
+    }
+
 }
 
 #endif //AK2_P_UTILS_H
