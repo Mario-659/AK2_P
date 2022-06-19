@@ -42,3 +42,14 @@ TEST(AdderTest, shouldAddTwoZeroes) {
     }
 }
 
+TEST(AdderTest, shouldAdd6With5_BOOST) {
+    constexpr int NUM_SIZE = 8;
+    boost::dynamic_bitset<> num1(8, 6);
+    boost::dynamic_bitset<> num2(8, 5);
+    Adder adder;
+
+    auto result = adder.add(num1, num2);
+
+    EXPECT_EQ(11, result.to_ulong());
+}
+

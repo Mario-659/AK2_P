@@ -20,3 +20,18 @@ bool *Adder::add(bool *a, bool *b, int numOfBits) {
     sum[numOfBits] = carry;
     return sum;
 }
+
+boost::dynamic_bitset<> Adder::add(boost::dynamic_bitset<> a, boost::dynamic_bitset<> b) {
+    carry = false;
+
+    int numOfBits = a.size();
+    if(b.size() > numOfBits) numOfBits = b.size();
+
+    boost::dynamic_bitset<> sum(numOfBits);
+
+    for (int i=0; i<numOfBits; i++)
+        sum[i] = fullAdder(a[i], b[i]);
+
+    sum[numOfBits] = carry;
+    return sum;
+}
