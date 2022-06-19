@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
 
 #include "../include/SimpleMultiplier.hpp"
-#include "../include/Utils.hpp"
 
 TEST(AdderTest, shouldMultiply6With5) {
     constexpr int NUM_SIZE = 8;
@@ -12,7 +11,7 @@ TEST(AdderTest, shouldMultiply6With5) {
 
     auto result = mul.multiply(num1, num2);
     
-    EXPECT_EQ(expected.to_ulong(), result.to_ulong());
+    EXPECT_EQ(expected.to_ulong(), result->to_ulong());
 }
 
 TEST(AdderTest, shouldMultiply5With10) {
@@ -24,5 +23,5 @@ TEST(AdderTest, shouldMultiply5With10) {
 
     auto result = mul.multiply(num1, num2);
     
-    EXPECT_EQ(expected.to_ulong(), result.to_ulong());
+    EXPECT_EQ(expected.to_ulong(), result->to_ulong());
 }
