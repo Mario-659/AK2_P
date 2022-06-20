@@ -52,7 +52,8 @@ struct ProposedIntegerMultiplier {
                 utils::appendToBitset(OP1, *result);
             
             // TODO some assertion in boost breaks with this
-            // delete result;
+            result->reset();
+            delete result;
         }
 
         //Store OP1 in result register
