@@ -44,14 +44,15 @@ struct ProposedIntegerMultiplier {
         //And concatenate them into two word Op0 and Op1
         for (size_t i = 0; i < bSubnumbers->size(); i++) {
             
-            dynamic_bitset<>* result = partialMultiplier.multiply(aSubnumbers->at(0), bSubnumbers->at(i));
+            dynamic_bitset<>* result = partialMultiplier.multiply(bSubnumbers->at(i), aSubnumbers->at(0));
 
             if (i % 2 == 0)
                 utils::appendToBitset(OP0, *result);
             else
                 utils::appendToBitset(OP1, *result);
             
-            delete result;
+            // TODO some assertion in boost breaks with this
+            // delete result;
         }
 
         //Store OP1 in result register

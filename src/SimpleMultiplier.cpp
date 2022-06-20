@@ -10,7 +10,8 @@ dynamic_bitset<>* SimpleMultiplier::multiply(dynamic_bitset<>& a, dynamic_bitset
         if (b[i] == 0) continue;
 
         dynamic_bitset<> x(a);
-        x<<=i;
+        for (int j=0; j<i; j++) x.push_back(0);
+        x = x<<i;
         products.push_back(x);
     }
 
