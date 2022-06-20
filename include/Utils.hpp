@@ -33,11 +33,10 @@ namespace utils {
     }
 
     void appendToBitset(boost::dynamic_bitset<>& x, boost::dynamic_bitset<>& y) {
-
         for (size_t i = 0; i < y.size(); i++) {
             x.push_back(y[i]);
         }
-        
+
     }
 
 }

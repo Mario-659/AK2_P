@@ -16,7 +16,8 @@ dynamic_bitset<>* SimpleMultiplier::multiply(dynamic_bitset<>& a, dynamic_bitset
     }
 
     Adder adder;
-    dynamic_bitset<>* sum = new dynamic_bitset<>(a.size());
+    size_t sumSize = a.size()+b.size();
+    auto* sum = new dynamic_bitset<>(sumSize);
 
     for (auto p : products) {
         (*sum) = adder.add(p, *sum);

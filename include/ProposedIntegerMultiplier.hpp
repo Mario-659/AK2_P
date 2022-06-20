@@ -40,12 +40,19 @@ struct ProposedIntegerMultiplier {
         dynamic_bitset<> OP0;
         dynamic_bitset<> OP1;
 
+        dynamic_bitset<> a0b0;
+        dynamic_bitset<> a0b1;
+        dynamic_bitset<> a0b2;
+
+
         //STEP 1 - allign partial products
         //And concatenate them into two word Op0 and Op1
         for (size_t i = 0; i < bSubnumbers->size(); i++) {
-            
-            dynamic_bitset<>* result = partialMultiplier.multiply(bSubnumbers->at(i), aSubnumbers->at(0));
 
+            dynamic_bitset<>* result = partialMultiplier.multiply(aSubnumbers->at(0),bSubnumbers->at(i));
+            if (i == 0) a0b0 = *result;
+            if (i == 1) a0b1 = *result;
+            if (i == 2) a0b2 = *result;
             if (i % 2 == 0)
                 utils::appendToBitset(OP0, *result);
             else
@@ -55,6 +62,12 @@ struct ProposedIntegerMultiplier {
             result->reset();
             delete result;
         }
+
+        std::cout <<"OP0:  "<< OP0  << std::endl;
+        std::cout <<"a0b0: "<< a0b0  << std::endl;
+        std::cout <<"a0b2: "<< a0b2  << std::endl;
+        std::cout <<"OP1:  "<< OP1 << std::endl;
+        std::cout <<"a0b1: "<< a0b1  << std::endl;
 
         //Store OP1 in result register
         utils::appendToBitset(resultRegister, OP1);
