@@ -74,8 +74,9 @@ struct ProposedIntegerMultiplier {
 
         //STEP 2
         //Add aligned words and add them to register
-        auto addResult = carryLookAheadAdder.add(OP0, OP1);
-        utils::appendToBitset(resultRegister, addResult);
+        dynamic_bitset<> shift(8);
+        utils::appendToBitset(resultRegister, shift);
+        resultRegister = carryLookAheadAdder.add(resultRegister, OP0);
     }
 };
 

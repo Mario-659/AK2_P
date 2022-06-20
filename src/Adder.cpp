@@ -32,6 +32,6 @@ boost::dynamic_bitset<> Adder::add(boost::dynamic_bitset<>& a, boost::dynamic_bi
     for (int i=0; i<numOfBits; i++)
         sum[i] = fullAdder(a[i], b[i]);
 
-    sum[numOfBits] = carry;
+    if (carry == 1) sum.push_back(1);
     return sum;
 }
