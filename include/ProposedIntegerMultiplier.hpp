@@ -13,6 +13,9 @@ struct ProposedIntegerMultiplier {
     Subnumbers* aSubnumbers {};
     Subnumbers* bSubnumbers {};
     dynamic_bitset<> resultRegister {};
+    dynamic_bitset<> resultRegisterYounger {};
+    dynamic_bitset<> resultRegisterOlder {};
+
     SimpleMultiplier partialMultiplier {};
     Adder carryLookAheadAdder {};
 
@@ -70,13 +73,21 @@ struct ProposedIntegerMultiplier {
         std::cout <<"a0b1: "<< a0b1  << std::endl;
 
         //Store OP1 in result register
-        utils::appendToBitset(resultRegister, OP1);
+//        utils::appendToBitset(resultRegister, OP1);
+//
+//        //STEP 2
+//        //Add aligned words and add them to register
+//        dynamic_bitset<> shift(8);
+//        utils::appendToBitset(resultRegister, shift);
+//        resultRegister = carryLookAheadAdder.add(resultRegister, OP0);
+        resultRegisterYounger = carryLookAheadAdder.add(a0b0,a0b1);
+        resultRegisterOlder = a0b2;
+        std::cout << "Younger result: " << resultRegisterYounger << std::endl;
+        std::cout << "Older result: " << resultRegisterOlder << std::endl;
 
-        //STEP 2
-        //Add aligned words and add them to register
-        dynamic_bitset<> shift(8);
-        utils::appendToBitset(resultRegister, shift);
-        resultRegister = carryLookAheadAdder.add(resultRegister, OP0);
+        utils::appendToBitset(resultRegister, resultRegisterYounger);
+        utils::appendToBitset(resultRegister, resultRegisterOlder);
+
     }
 };
 
